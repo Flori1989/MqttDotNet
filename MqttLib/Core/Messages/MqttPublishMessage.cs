@@ -39,7 +39,7 @@ namespace MqttLib.Core.Messages
         int payloadLen = base.variableHeaderLength;
 
         _topic = ReadStringFromStream(str);
-        payloadLen -= (GetUTF8StringLength(_topic) + 2);
+        payloadLen -= (_topic.Length + 2);
 
         if (msgQos != QoS.BestEfforts) {
           _messageID = ReadUshortFromStream(str);
