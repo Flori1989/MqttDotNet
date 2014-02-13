@@ -86,7 +86,7 @@ namespace MqttLib
                     var connack = ((MqttConnackMessage)e.Message);
                     if (connack.Response == MqttConnectionResponse.Accepted)
                         OnConnected(new EventArgs());
-                    else
+                    else if(!isConnected)
                         OnConnectionLost(new MqttConnackEventArgs(connack.Response));
                     break;
                 case MessageType.DISCONNECT:
